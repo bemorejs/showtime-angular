@@ -1,0 +1,17 @@
+/** WARNING: Do NOT import this file in any component style */
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+// the default theme (same as the example above).
+$light-primary: mat-palette($mat-blue);
+$light-accent: mat-palette($mat-green, 600, A100, A700); // stylelint-disable-line value-keyword-case
+$light-warn: mat-palette($mat-deep-orange);
+$light-theme: mat-light-theme($light-primary, $light-accent, $light-warn);
+
+@mixin theme-components($theme) {
+  @include angular-material-theme($theme);
+}
+
+// Include the default theme styles.
+@include theme-components($light-theme);
