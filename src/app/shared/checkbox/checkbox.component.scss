@@ -1,0 +1,55 @@
+@import 'variables';
+
+$checkbox-size: 18px;
+
+.checkbox-container {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+
+  &:hover .checkbox {
+    border-color: blue;
+  }
+
+  .checkbox-label {
+    font-size: 12px;
+    color: $contrast-dark;
+  }
+}
+
+.check {
+  position: absolute;
+  width: 22px;
+  bottom: -2px;
+  left: -1px;
+}
+
+.checkbox {
+  height: $checkbox-size;
+  width: $checkbox-size;
+  position: relative;
+  background-color: transparent;
+  border: 1px solid $contrast-dark;
+  border-radius: 2px;
+  outline: none;
+  margin-right: 17px;
+
+  &.checked {
+    border-color: green;
+  }
+
+  :host(.ng-invalid.ng-touched) & {
+    border: solid 1px $error-color;
+
+    &:focus, &:active {
+      box-shadow: 0 0 10px 0 rgba(224, 63, 62, 0.4);
+    }
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
