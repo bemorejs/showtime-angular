@@ -14,4 +14,17 @@
   <p>{{selectedOption.label}} {{selectedOption.value}}</p>
 </div>
 
-<router-outlet></router-outlet>
+
+<flwp-checkbox label="basic checkbox"
+               [(ngModel)]="checkedCheckbox"
+>
+</flwp-checkbox>
+
+<p>Checkbox is {{checkedCheckbox? 'checked': 'non-checked'}}</p>
+
+<flwp-love-checkbox label="LOVE checkbox"
+               [(ngModel)]="checkedLoveCheckbox"
+>
+</flwp-love-checkbox>
+
+<p>Checkbox is {{checkedLoveCheckbox? 'checked': 'non-checked'}}</p>

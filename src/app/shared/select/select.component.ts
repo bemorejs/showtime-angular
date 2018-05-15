@@ -47,7 +47,6 @@ export class SelectComponent implements ControlValueAccessor {
 
   @HostListener('document:click', ['$event'])
   toggleDropdown(event: Event): void {
-    console.log('this.eRef.nativeElement.contains(event.target)', this.eRef.nativeElement.contains(event.target));
     if (!this.eRef.nativeElement.contains(event.target)) {
       this.expanded = false;
     }
@@ -57,7 +56,7 @@ export class SelectComponent implements ControlValueAccessor {
     this.selectedValue = value;
   }
 
-  registerOnChange(fn: (value: number | string) => void): void {
+  registerOnChange(fn: (value: SelectItem) => void): void {
     this.changeCallback = fn;
   }
 

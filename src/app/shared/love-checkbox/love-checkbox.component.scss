@@ -1,0 +1,19 @@
+@import 'variables';
+
+$transition-duration: 0.2s;
+
+svg {
+  cursor: pointer;
+  user-select: none;
+}
+
+path {
+  stroke: $contrast-dark;
+  fill: transparent;
+  transition: stroke $transition-duration, fill $transition-duration;
+
+  .active & {
+    stroke: $primary-color;
+    fill: $primary-color;
+  }
+}
