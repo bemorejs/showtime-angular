@@ -1,0 +1,155 @@
+@import 'variables';
+
+$background-color: #ffffff;
+$animation-time: 0.4s;
+$border-color: $contrast-dark;
+$border-color: $contrast-dark;
+
+.select-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  color: $primary-color;
+  text-transform: uppercase;
+  font-size: 10px;
+  margin-bottom: 4px;
+}
+
+.select-overlay {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.select-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.select-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid $border-color;
+  background-color: $background-color;
+  padding: 8px 16px;
+  font-size: 12px;
+
+  .arrow-first & {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    padding: 10px 8px;
+  }
+
+  &:hover {
+    border-color: $contrast-dark;
+  }
+
+  &.expanded {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
+    border-color: $contrast-dark;
+  }
+
+  .no-outline & {
+    border: none;
+
+    &:hover {
+      border: none;
+    }
+
+    &.expanded {
+      box-shadow: none;
+      border: none;
+    }
+  }
+
+  :host(.ng-invalid.ng-touched) & {
+    border: solid 1px $error-color;
+
+    &:focus, &:active {
+      box-shadow: 0 0 10px 0 rgba(224, 63, 62, 0.4);
+    }
+  }
+}
+
+.select-content-wrapper {
+  position: absolute;
+  z-index: 20;
+  max-height: 0;
+  width: 100%;
+  overflow: hidden;
+  transition: max-height $animation-time;
+  background-color: $background-color;
+  color: $contrast-dark;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.24), 0 0 12px 0 rgba(0, 0, 0, 0.12);
+
+  &.expanded {
+    max-height: 256px;
+    overflow-y: auto;
+  }
+}
+
+.option {
+  padding: 10px 24px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  font-size: 12px;
+
+  &:hover {
+    background-color: rgba($contrast-dark, 0.15);
+  }
+
+  .option-icons & {
+    padding: 10px 12px 10px 32px;
+  }
+}
+
+.arrow {
+  margin-left: 8px;
+  transition: transform $animation-time;
+
+  .arrow-first & {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+  .expanded & {
+    transform: rotate(-180deg);
+  }
+}
+
+.select-content {
+  display: flex;
+  align-items: center;
+
+  $icon-size: 32px;
+
+  .icon {
+    width: $icon-size;
+    height: $icon-size;
+    margin-right: 8px;
+  }
+
+  .option-icons & {
+    min-height: $icon-size + 8px;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}

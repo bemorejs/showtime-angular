@@ -1,1 +1,11 @@
+<flwp-select
+  [(selectedOption)]="selectedOption"
+  label="Select something:"
+  [options]="options">
+</flwp-select>
+
+<div *ngIf="selectedOption">
+  <p>{{selectedOption.label}} {{selectedOption.value}}</p>
+</div>
+
 <router-outlet></router-outlet>
