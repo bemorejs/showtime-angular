@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, forwardRef, Input, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, forwardRef, HostListener, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectItem } from '../data.mock';
 
@@ -30,7 +30,7 @@ export class SelectComponent implements ControlValueAccessor {
   expanded = false;
   isDisabled = false;
 
-  changeCallback: (value: number | string) => void = () => null;
+  changeCallback: (value: SelectItem) => void = () => null;
   touchCallback: () => void = () => null;
 
   changeSelected(item: SelectItem): void {
@@ -42,9 +42,15 @@ export class SelectComponent implements ControlValueAccessor {
     this.touchCallback();
   }
 
-  switchDropdown(e: Event): void {
-    e.preventDefault();
-    this.expanded = !this.expanded;
+  constructor(private eRef: ElementRef) {
+  }
+
+  @HostListener('document:click', ['$event'])
+  toggleDropdown(event: Event): void {
+    console.log('this.eRef.nativeElement.contains(event.target)', this.eRef.nativeElement.contains(event.target));
+    if (!this.eRef.nativeElement.contains(event.target)) {
+      this.expanded = false;
+    }
   }
 
   writeValue(value: SelectItem): void {

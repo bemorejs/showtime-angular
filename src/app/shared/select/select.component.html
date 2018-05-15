@@ -1,14 +1,8 @@
-<div *ngIf="expanded" class="select-overlay"
-     (click)="switchDropdown($event)"
-     (wheel)="switchDropdown($event)"
-     (touch)="switchDropdown($event)">
-</div>
-
 <div class="select-wrapper">
   <div class="label" *ngIf="selectLabel">{{selectLabel}}</div>
   <div class="select-container">
     <button type="button" class="select-button"
-            (click)="switchDropdown($event)"
+            (click)="expanded = true"
             [ngClass]="{'expanded': expanded}">
       <span class="select-content"
             *ngIf="selectedOption; else placeholderText">

@@ -4,6 +4,12 @@
   [options]="options">
 </flwp-select>
 
+<flwp-select
+  [(selectedOption)]="selectedOption"
+  label="Select something:"
+  [options]="options$ | async">
+</flwp-select>
+
 <div *ngIf="selectedOption">
   <p>{{selectedOption.label}} {{selectedOption.value}}</p>
 </div>
