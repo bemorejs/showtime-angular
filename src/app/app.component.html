@@ -1,30 +1,31 @@
-<flwp-select
-  [(selectedOption)]="selectedOption"
-  label="Select something:"
-  [options]="options">
-</flwp-select>
+<div class="wrapper">
+  <flwp-select
+    [(selectedOption)]="selectedOption"
+    label="Select something:"
+    [options]="options">
+  </flwp-select>
 
-<flwp-select
-  [(selectedOption)]="selectedOption"
-  label="Select something:"
-  [options]="options$ | async">
-</flwp-select>
+  <flwp-select
+    [(selectedOption)]="selectedOption"
+    label="Select something:"
+    [options]="options$ | async">
+  </flwp-select>
 
-<div *ngIf="selectedOption">
-  <p>{{selectedOption.label}} {{selectedOption.value}}</p>
+  <div *ngIf="selectedOption">
+    <p>{{selectedOption.label}} {{selectedOption.value}}</p>
+  </div>
+
+  <flwp-checkbox label="basic checkbox"
+                 [(ngModel)]="checkedCheckbox"
+  >
+  </flwp-checkbox>
+
+  <p>Checkbox is {{checkedCheckbox? 'checked': 'non-checked'}}</p>
+
+  <flwp-love-checkbox label="LOVE checkbox"
+                      [(ngModel)]="checkedLoveCheckbox"
+  >
+  </flwp-love-checkbox>
+
+  <p>Checkbox is {{checkedLoveCheckbox? 'checked': 'non-checked'}}</p>
 </div>
-
-
-<flwp-checkbox label="basic checkbox"
-               [(ngModel)]="checkedCheckbox"
->
-</flwp-checkbox>
-
-<p>Checkbox is {{checkedCheckbox? 'checked': 'non-checked'}}</p>
-
-<flwp-love-checkbox label="LOVE checkbox"
-               [(ngModel)]="checkedLoveCheckbox"
->
-</flwp-love-checkbox>
-
-<p>Checkbox is {{checkedLoveCheckbox? 'checked': 'non-checked'}}</p>
